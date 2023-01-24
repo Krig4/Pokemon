@@ -7,8 +7,7 @@ namespace Pokemon
     public class SpeciesPokemon // Atributos que tendrá el Pokemon
     {
         string name;        
-        string type;
-        char gender;
+        string type;        
         int id;
         int level;
         int hp;
@@ -17,15 +16,12 @@ namespace Pokemon
         int spAtk;
         int spDef;
         int speed;
-        int maxHP;
-        int catchRate;
-        DateTime? catDate;        
+        int maxHP;              
         public SpeciesPokemon(string name, string type, int id, int level, int hp, int atk, int def, int spAtk, int spDef, int speed, int maxHP) // Constructor para los atributos
         {
             this.name = name;
             this.type = type;
-            this.id = id;
-            this.gender = GenerateGender();
+            this.id = id;            
             this.level = level;
             this.hp = hp;
             this.atk = atk;
@@ -33,8 +29,7 @@ namespace Pokemon
             this.spAtk = spAtk;
             this.spDef = spDef;
             this.speed = speed;
-            this.maxHP = maxHP;
-            this.catchRate = GenerateCatchRate();            
+            this.maxHP = maxHP;                       
         }
         public SpeciesPokemon(int hp) // Constructor para la vida del Pokémon
         {
@@ -43,36 +38,7 @@ namespace Pokemon
         public SpeciesPokemon() // Constructor sin parametros
         { 
         }
-        public int GenerateCatchRate()
-        {
-            Random random = new Random();
-            int catchRate = random.Next(0, 256);
-            return catchRate;
-        }
-
-        public char GenerateGender() // Generador automático de genero del Pokemon
-        {
-            Random random = new Random();
-            int sex = random.Next(0, 2);
-            if (sex == 0)
-            {
-                gender = '♂';
-            }
-            else if (sex == 1)
-            {
-                gender = '♀';
-            }
-            return gender;
-        }
-        // Se crean los Get y Set para todos los atributos
-        public DateTime? GetDate()
-        {
-            return catDate;
-        }
-        public void SetDate(DateTime? date)
-        {
-            this.catDate = date;
-        }        
+        // Se crean los Get y Set para todos los atributos        
         public int GetId()
         {
             return id;
@@ -80,11 +46,7 @@ namespace Pokemon
         public void SetId(int id)
         {
             this.id= id;
-        }
-        public char GetGender()
-        {
-            return gender;
-        }       
+        }        
         public int GetLevel()
         {
             return level;
@@ -164,6 +126,6 @@ namespace Pokemon
         public void SetType(string type)
         {
             this.type = type;
-        }   
+        }        
     }
 }

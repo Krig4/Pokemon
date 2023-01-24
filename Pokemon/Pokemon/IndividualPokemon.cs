@@ -5,30 +5,151 @@ using System.Text;
 namespace Pokemon
 {
     class IndividualPokemon // Stats sacadas de https://veekun.com/
-    {        
-        public static SpeciesPokemon[] InitPokemons() // Pokemons iniciales
+    {
+        SpeciesPokemon specie;
+        char gender;
+        string eo;
+        DateTime? catDate;
+        Moves[] movement;
+        public IndividualPokemon(SpeciesPokemon specie)
         {
-            SpeciesPokemon[] initPokemons = new SpeciesPokemon[3];            
-            initPokemons[0] = new SpeciesPokemon("Bulbasaur", "Planta", 001, 5, 45, 49, 49, 65, 65, 45, 45);
-            initPokemons[1] = new SpeciesPokemon("Squirtle", "Agua", 007, 5, 44, 48, 65, 50, 64, 43, 44); 
-            initPokemons[2] = new SpeciesPokemon("Charmander", "Fuego", 004, 5, 39, 52, 43, 60, 50, 65, 39); 
-            return initPokemons;
+            this.specie = specie;
+            this.gender = GenerateGender();
+            this.movement = new Moves[4];
         }
-        public static SpeciesPokemon[] EnemyPokemons() // Pokemons enemigos 
+        public int GenerateCatchRate()
         {
-            SpeciesPokemon[] enemyPokemons = new SpeciesPokemon[151];
-            enemyPokemons[0] = new SpeciesPokemon("Pidgey", "Volador", 016, 5, 40, 45, 40, 35, 35, 56, 40);
-            enemyPokemons[1] = new SpeciesPokemon("Caterpie", "Bicho", 010, 5, 45, 30, 35, 20, 20, 45, 45);
-            enemyPokemons[2] = new SpeciesPokemon("Rattata", "Normal", 019, 5, 30, 56, 35, 25, 35, 72, 30);
-            enemyPokemons[3] = new SpeciesPokemon("Bulbasaur", "Planta", 001, 5, 45, 49, 49, 65, 65, 45, 45);
-            enemyPokemons[4] = new SpeciesPokemon("Squirtle", "Agua", 007, 5, 44, 48, 65, 50, 64, 43, 44);
-            enemyPokemons[5] = new SpeciesPokemon("Charmander", "Fuego", 004, 5, 39, 52, 43, 60, 50, 65, 39);
-            return enemyPokemons;
+            Random random = new Random();
+            int catchRate = random.Next(0, 256);
+            return catchRate;
         }
-        public static SpeciesPokemon[] MyPokemons() // Mis Pokémons
+        public char GenerateGender() // Generador automático de genero del Pokemon
         {
-            SpeciesPokemon[] myPokemons = new SpeciesPokemon[6];
-            return myPokemons;
-        }        
+            Random random = new Random();
+            int sex = random.Next(0, 2);
+            if (sex == 0)
+            {
+                gender = '♂';
+            }
+            else if (sex == 1)
+            {
+                gender = '♀';
+            }
+            return gender;
+        }
+        public DateTime? GetDate() // Se crean los Get y Set para todos los atributos 
+        {
+            return catDate;
+        }
+        public void SetDate(DateTime? date)
+        {
+            this.catDate = date;
+        }
+        public char GetGender()
+        {
+            return gender;
+        }
+        public string GetEO()
+        {
+            return eo;
+        }
+        public void SetEO(string eo)
+        {
+            this.eo = eo;
+        }
+        public void SetName(string name)
+        {
+            specie.SetName(name);
+        }
+        public string GetName()
+        {
+            return specie.GetName();
+        }
+        public void SetType(string type)
+        {
+            specie.SetType(type);
+        }
+        public string getType()
+        {
+            return specie.getType();
+        }
+        public void SetId(int id)
+        {
+            specie.SetId(id);
+        }
+        public int GetId()
+        {
+            return specie.GetId();
+        }
+        public void SetLevel(int level)
+        {
+            specie.SetLevel(level);
+        }
+        public int GetLevel()
+        {
+            return specie.GetLevel();
+        }
+        public void SetHp(int hp)
+        {
+            specie.SetHp(hp);
+        }
+        public int GetHp()
+        {
+            return specie.GetHp();
+        }
+        public void SetAtk(int atk)
+        {
+            specie.SetAtk(atk);
+        }
+        public int GetAtk()
+        {
+            return specie.GetAtk();
+        }
+        public void SetDef(int def)
+        {
+            specie.SetDef(def);
+        }
+        public int GetDef()
+        {
+            return specie.GetDef();
+        }
+        public void SetSpDef(int spDef)
+        {
+            specie.SetSpDef(spDef);
+        }
+        public int GetSpDef()
+        {
+            return specie.GetSpDef();
+        }
+        public void SetSpAtk(int spAtk)
+        {
+            specie.SetSpAtk(spAtk);
+        }
+        public int GetSpAtk()
+        {
+            return specie.GetSpAtk();
+        }
+        public void SetSpeed(int speed)
+        {
+            specie.SetSpeed(speed);
+        }
+        public int GetSpeed()
+        {
+            return specie.GetSpAtk();
+        }
+        public void SetMaxHP(int maxHP)
+        {
+            specie.SetMaxHP(maxHP);
+        }
+        public int GetMaxHP()
+        {
+            return specie.GetMaxHP();
+        }
+        public Moves[] GetMoves()
+        {
+            Random random = new Random();
+            int mov = random.Next(0, movement.Length);
+            return movement;
+        }
     }
 }
